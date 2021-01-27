@@ -24,6 +24,7 @@ public class CheckLastRecordAge extends BaseSeleniumTest {
         String password = "demo123";
         long recordAgeThreshold = 1200; //time threshold in seconds
 
+        //Arrenge
         testReporter.set(reports.createTest("Satellite - Check age of last record"));
         driver.get("https://track.satellite.net.pl");
         LogonPage logonPage = new LogonPage(driver);
@@ -31,6 +32,7 @@ public class CheckLastRecordAge extends BaseSeleniumTest {
         LeftPanel_TabObjects leftPanel_tabObjects = new LeftPanel_TabObjects(driver);
         Helpers helpers = new Helpers();
 
+        //Act
         logonPage.submitCredentials(username,password);
         leftPanel.goToObjectsTab();
 
@@ -41,6 +43,8 @@ public class CheckLastRecordAge extends BaseSeleniumTest {
                  String lastRecordTime = leftPanel_tabObjects.getCarLastRecordTime(car);
                  long recordAge = helpers.calculateRecordAge(lastRecordTime);
                  testReporter.get().info("Age of last record of "+carName+": "+recordAge+"s");
+
+                 //Assert
                  testReporter.get().info("Assertion: Last record should be not older than: "+recordAgeThreshold+"s");
                  Assert.assertTrue(recordAge<recordAgeThreshold,"Last record not older than "+recordAgeThreshold+"s");
              }

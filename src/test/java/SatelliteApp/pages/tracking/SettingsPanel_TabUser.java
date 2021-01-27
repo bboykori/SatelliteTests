@@ -17,8 +17,7 @@ public class SettingsPanel_TabUser extends BaseSeleniumTest {
     @FindBy(xpath = "//div[@id='settings_main_my_account']/input[@type='button']")
     private WebElement buttonSave;
 
-    @FindBy(xpath = "//div[@class='ui-pnotify-text']")
-    private WebElement alertPopup;
+
 
 
     //div[@class='ui-pnotify-text']
@@ -34,10 +33,7 @@ public class SettingsPanel_TabUser extends BaseSeleniumTest {
         //executor.executeScript("arguments[0].click();",buttonSave) ;
     }
 
-    public String getAlertMessage(){
-        MySeleniumMethods.waitForWebElement(alertPopup,40,driver);
-        return alertPopup.getText();
-    }
+
 
 
 
