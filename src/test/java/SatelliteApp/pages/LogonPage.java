@@ -23,7 +23,7 @@ public class LogonPage extends BaseSeleniumTest {
         fieldUsername.sendKeys(username);
         fieldPassword.sendKeys(password);
         buttonSubmit.click();
-        MySeleniumMethods.waitForWebElementBy(By.xpath("//img[@src='theme/images/gear.png']"),20,driver);
+        MySeleniumMethods.waitForWebElementBy(By.xpath("//img[@src='theme/images/gear.png']"),60,driver);
         testReporter.get().info("User: "+username+" - Logon success");
     }
 
