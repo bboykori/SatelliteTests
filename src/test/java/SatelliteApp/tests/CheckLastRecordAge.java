@@ -22,7 +22,7 @@ public class CheckLastRecordAge extends BaseSeleniumTest {
 
         String username = "demo";
         String password = "demo123";
-        long recordAgeThreshold = 600; //time threshold in seconds
+        long recordAgeThreshold = 1200; //time threshold in seconds
 
         testReporter.set(reports.createTest("Satellite - Check age of last record"));
         driver.get("https://track.satellite.net.pl");
