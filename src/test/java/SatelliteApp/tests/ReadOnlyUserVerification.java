@@ -41,7 +41,7 @@ public class ReadOnlyUserVerification extends BaseSeleniumTest {
     public Object[][] getData() {
         Object[][] data = null;
         try {
-            data = MyExcelReader.myExcelReaderForDataProvider("src\\test\\resources\\SatelliteUserTest.xlsx",true);
+            data = MyExcelReader.myExcelReaderForDataProvider("src\\test\\resources\\SatelliteUserTest2.xlsx",true);
         } catch (IOException e) {
             e.printStackTrace();
         }
