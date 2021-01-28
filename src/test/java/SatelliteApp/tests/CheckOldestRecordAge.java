@@ -20,7 +20,7 @@ public class CheckOldestRecordAge extends BaseSeleniumTest {
 
         String username = "test";
         String password = "test123";
-        long oldestRecordAgeThreshold = 93;
+        long expectedOldestRecordAgeDays = 93;
 
         //Arrenge
         testReporter.set(reports.createTest("Satellite - Check oldest record"));
@@ -35,7 +35,7 @@ public class CheckOldestRecordAge extends BaseSeleniumTest {
         logonPage.submitCredentials(username,password);
         leftPanel.goToHistoryTab();
         leftPanel_tabHistory.selectDateTimeFrom("2015-01-01 12:00");
-        leftPanel_tabHistory.selectDateTimeTo(helpers.dateTimePast(oldestRecordAgeThreshold-4));
+        leftPanel_tabHistory.selectDateTimeTo(helpers.dateTimePast(expectedOldestRecordAgeDays-4));
         leftPanel_tabHistory.showHistory();
         bottomPanel.showRecords();
         bottomPanel.changeOrder();
@@ -44,8 +44,8 @@ public class CheckOldestRecordAge extends BaseSeleniumTest {
         testReporter.get().info("Age of oldest record is: "+oldestRecordAgeDays+" days");
 
         //Assert
-        testReporter.get().info("Assertion: Age of oldest record should not be greater than "+oldestRecordAgeThreshold+"days");
-        Assert.assertTrue(oldestRecordAgeDays<=oldestRecordAgeThreshold,"Age of oldest record should not be greater than "+oldestRecordAgeThreshold+"days");
+        testReporter.get().info("Assertion: Age of oldest record should be "+expectedOldestRecordAgeDays+"days");
+        Assert.assertEquals(oldestRecordAgeDays,expectedOldestRecordAgeDays);
 
     }
 
